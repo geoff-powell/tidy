@@ -1,0 +1,19 @@
+package com.greenmiststudios.common.components.screens
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import com.greenmiststudios.common.components.TopAppBarWithContent
+import com.greenmiststudios.common.viewmodels.HomeViewEvent
+import com.greenmiststudios.common.viewmodels.HomeViewModel
+
+@Composable
+public fun HomeScreen(viewModel: HomeViewModel, onEvent: (HomeViewEvent) -> Unit) {
+  TopAppBarWithContent {
+    Box(modifier = Modifier.fillMaxWidth()) {
+      Text("Home")
+    }
+  }
+}

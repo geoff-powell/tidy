@@ -58,7 +58,6 @@ kotlin {
         api(libs.uuid)
         api(libs.sqldelight.coroutines.extensions)
 
-        implementation(libs.ktor.core)
         implementation(libs.molecule.runtime)
       }
     }
@@ -77,7 +76,6 @@ kotlin {
         api(libs.koin.android)
         api(libs.koin.androidx.compose)
 
-        implementation(libs.ktor.jvm)
         implementation(libs.sqldelight.driver.android)
       }
     }
@@ -89,7 +87,6 @@ kotlin {
     val jvmMain by getting {
       dependencies {
         api(compose.preview)
-        implementation(libs.ktor.jvm)
         implementation(libs.sqldelight.driver.jvm)
       }
     }
@@ -97,26 +94,23 @@ kotlin {
     val jsMain by getting {
       dependencies {
         api(compose.html.core)
-        implementation(libs.ktor.js)
-        implementation(libs.ktor.jsonjs)
         implementation(libs.sqldelight.driver.web)
+        implementation(npm("@cashapp/sqldelight-sqljs-worker", libs.versions.sqldelight.get()))
+        implementation(npm("sql.js", "1.8.0"))
         implementation(devNpm("copy-webpack-plugin", "9.1.0"))
       }
     }
 
     val iosX64Main by getting {
       dependencies {
-        implementation(libs.ktor.ios)
       }
     }
     val iosArm64Main by getting {
       dependencies {
-        implementation(libs.ktor.ios)
       }
     }
     val iosSimulatorArm64Main by getting {
       dependencies {
-        implementation(libs.ktor.ios)
       }
     }
   }

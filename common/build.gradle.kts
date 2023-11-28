@@ -125,7 +125,7 @@ kotlin {
 }
 
 android {
-  namespace = "com.greenmiststudios.tidy"
+  namespace = "com.greenmiststudios.tidy.common"
   compileSdk = 34
   sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
   defaultConfig {

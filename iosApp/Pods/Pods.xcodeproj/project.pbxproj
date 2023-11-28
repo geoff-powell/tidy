@@ -166,19 +166,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E146E468246699530479A2E6 /* xcschemes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = xcschemes;
+			sourceTree = "<group>";
+		};
 		E146E79DF9DC2685CC7A33BC /* Pods.xcodeproj */ = {
 			isa = PBXGroup;
 			children = (
 				E146ED042526FAE0115CFDCA /* xcuserdata */,
 			);
 			path = Pods.xcodeproj;
-			sourceTree = "<group>";
-		};
-		E146E8A40E14B4E023237586 /* xcschemes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = xcschemes;
 			sourceTree = "<group>";
 		};
 		E146E8A7D438335FEEDDE5F9 /* Local Podspecs */ = {
@@ -206,7 +206,7 @@
 		E146EF7126935F415B8DFCBA /* gpowell.xcuserdatad */ = {
 			isa = PBXGroup;
 			children = (
-				E146E8A40E14B4E023237586 /* xcschemes */,
+				E146E468246699530479A2E6 /* xcschemes */,
 			);
 			path = gpowell.xcuserdatad;
 			sourceTree = "<group>";

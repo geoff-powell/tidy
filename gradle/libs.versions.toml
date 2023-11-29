@@ -41,4 +41,4 @@ sqldelight-primitive-adapters = { module = "app.cash.sqldelight:primitive-adapte
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-tab-navigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
 voyager-bottom-sheet-navigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
-uuid = { module = "com.benasher44:uuid", version = "0.8.1" }
+uuid = { module = "com.benasher44:uuid", version = "0.8.2" }

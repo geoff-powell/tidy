@@ -166,7 +166,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E146E468246699530479A2E6 /* xcschemes */ = {
+		E146E30DFF75A07F8320D189 /* xcschemes */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -206,7 +206,7 @@
 		E146EF7126935F415B8DFCBA /* gpowell.xcuserdatad */ = {
 			isa = PBXGroup;
 			children = (
-				E146E468246699530479A2E6 /* xcschemes */,
+				E146E30DFF75A07F8320D189 /* xcschemes */,
 			);
 			path = gpowell.xcuserdatad;
 			sourceTree = "<group>";

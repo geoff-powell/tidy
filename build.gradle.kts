@@ -25,7 +25,7 @@ plugins {
 allprojects {
   afterEvaluate {
     extensions.findByType<ComposeExtension>()?.apply {
-      kotlinCompilerPlugin.set("1.5.4-dev1-kt2.0.0-Beta1")
+      kotlinCompilerPlugin.set(libs.versions.compose.kotlin.compiler.get())
     }
   }
 }

@@ -41,34 +41,32 @@ public data class EditListScreen(override val params: Config) : Screen<EditListS
 
 @Composable
 public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEvent) -> Unit) {
-  LazyColumn(Modifier.padding(16.dp)) {
-    item {
-      when (viewModel) {
-        is EditListViewModel.Add -> CreateListScreen(viewModel, onEvent)
-        is EditListViewModel.Edit -> EditListContentScreen(viewModel, onEvent)
-        EditListViewModel.Loading -> {
-          Box(modifier = Modifier.height(128.dp)) {
-            CircularProgressIndicator()
-          }
-          return@item
+  Column(Modifier.padding(16.dp)) {
+    when (viewModel) {
+      is EditListViewModel.Add -> CreateListScreen(viewModel, onEvent)
+      is EditListViewModel.Edit -> EditListContentScreen(viewModel, onEvent)
+      EditListViewModel.Loading -> {
+        Box(modifier = Modifier.height(128.dp)) {
+          CircularProgressIndicator()
         }
+        return@Column
       }
+    }
 
-      Button(onClick = { onEvent(AddItem) }) {
-        Text("Add Item")
-      }
+    Button(onClick = { onEvent(AddItem) }) {
+      Text("Add Item")
+    }
 
-      val bottomSheetNavigator = LocalBottomSheetNavigator.current
-      Button(
-        modifier = Modifier
-          .fillMaxWidth(),
-        onClick = {
-          onEvent(UpdateList)
-          bottomSheetNavigator.hide()
-        }
-      ) {
-        Text("Save")
+    val bottomSheetNavigator = LocalBottomSheetNavigator.current
+    Button(
+      modifier = Modifier
+        .fillMaxWidth(),
+      onClick = {
+        onEvent(UpdateList)
+        bottomSheetNavigator.hide()
       }
+    ) {
+      Text("Save")
     }
   }
 }

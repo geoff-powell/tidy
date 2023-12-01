@@ -25,14 +25,17 @@ ORDER BY TidyList.created_at DESC;
 
 getAllListsWithItems:
 SELECT * FROM TidyList
-LEFT JOIN (SELECT * FROM TidyListItem GROUP BY list_id LIMIT :max_items) AS limited_items ON TidyList.id = limited_items.list_id
-ORDER BY TidyList.created_at DESC;
+LEFT JOIN (
+  SELECT * FROM TidyListItem
+  ORDER BY created_at DESC LIMIT :max_items
+) AS limited_items ON TidyList.id = limited_items.list_id
+ORDER BY TidyList.created_at DESC, limited_items.created_at DESC;
 
 getListWithItems:
 SELECT * FROM TidyList
 LEFT JOIN TidyListItem ON TidyList.id = TidyListItem.list_id
 WHERE TidyList.id = :id
-ORDER BY TidyList.created_at DESC;
+ORDER BY TidyList.created_at DESC, TidyListItem.created_at DESC;
 
 addList:
 INSERT INTO TidyList (id, name, description, created_by) VALUES (?, ?, ?, ?);

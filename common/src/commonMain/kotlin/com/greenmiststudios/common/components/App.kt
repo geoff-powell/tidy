@@ -4,7 +4,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
@@ -23,6 +26,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
@@ -35,40 +39,47 @@ import org.koin.compose.KoinContext
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun App() {
-  KoinContext {
-    MaterialTheme(
-      shapes = Shapes(
-        small = RoundedCornerShape(4.dp),
-        medium = RoundedCornerShape(8.dp),
-        large = RoundedCornerShape(16.dp),
-      )
-    ) {
-      CompositionLocalProvider(
-        LocalStringManager provides RealStringManager(),
+  Box(
+    modifier =
+    Modifier.fillMaxSize()
+      .statusBarsPadding()
+      .navigationBarsPadding()
+  ) {
+    KoinContext {
+      MaterialTheme(
+        shapes = Shapes(
+          small = RoundedCornerShape(4.dp),
+          medium = RoundedCornerShape(8.dp),
+          large = RoundedCornerShape(16.dp),
+        )
       ) {
-        BottomSheetNavigator(
-          sheetShape = RoundedCornerShape(16.dp, 16.dp, 0.dp, 0.dp),
+        CompositionLocalProvider(
+          LocalStringManager provides RealStringManager(),
         ) {
-          TabNavigator(Tab.Home) {
-            Scaffold(
-              modifier = Modifier.fillMaxSize(),
-              bottomBar = {
-                NavigationBar(
-                  modifier = Modifier.fillMaxWidth(),
-                ) {
-                  TabItem(Tab.Home)
-                  TabItem(Tab.Lists)
-                  TabItem(Tab.Calendar)
-                }
-              },
-            ) {
-              Box(
-                modifier = Modifier
-                  .padding(it)
-                  .fillMaxWidth(),
-                contentAlignment = Alignment.Center
+          BottomSheetNavigator(
+            sheetShape = RoundedCornerShape(16.dp, 16.dp, 0.dp, 0.dp),
+          ) {
+            TabNavigator(Tab.Home) {
+              Scaffold(
+                modifier = Modifier.fillMaxSize(),
+                bottomBar = {
+                  NavigationBar(
+                    modifier = Modifier.fillMaxWidth(),
+                  ) {
+                    TabItem(Tab.Home)
+                    TabItem(Tab.Lists)
+                    TabItem(Tab.Calendar)
+                  }
+                },
               ) {
-                CurrentTab()
+                Box(
+                  modifier = Modifier
+                    .padding(it)
+                    .fillMaxWidth(),
+                  contentAlignment = Alignment.Center
+                ) {
+                  CurrentTab()
+                }
               }
             }
           }

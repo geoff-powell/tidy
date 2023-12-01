@@ -48,6 +48,10 @@ public class EditListPresenter(
       mutableStateOf(defaultList)
     }
 
+    var newItemText by remember {
+      mutableStateOf("")
+    }
+
     LaunchedEffect(Unit) {
       events.collect { event ->
         when (event) {
@@ -77,13 +81,18 @@ public class EditListPresenter(
             tidyList = tidyList.copy(items = tidyList.items + TidyListItem(id = uuid4().toString(), text = ""))
           }
 
-          else -> Unit
+          is EditListViewEvent.AddNewItem -> {
+            tidyList = tidyList.copy(items = tidyList.items + TidyListItem(id = uuid4().toString(), text = event.text))
+            newItemText = ""
+          }
+          is EditListViewEvent.UpdateNewItemText -> newItemText = event.text
         }
 
       }
     }
 
-    return EditListViewModel.Add(
+    return EditListViewModel.Loaded.Add(
+      title = "Add List",
       name = tidyList.name,
       items = tidyList.items,
     )
@@ -104,6 +113,10 @@ public class EditListPresenter(
 
     if (editableTidyList == null && tidyList != null) {
       editableTidyList = tidyList
+    }
+
+    var newItemText by remember {
+      mutableStateOf("")
     }
 
     LaunchedEffect(Unit) {
@@ -134,13 +147,23 @@ public class EditListPresenter(
           EditListViewEvent.AddItem -> {
             editableTidyList = editableTidyList?.copy(items = editableTidyList?.items.orEmpty() + TidyListItem(id = uuid4().toString(), text = ""))
           }
+
+          is EditListViewEvent.AddNewItem -> {
+            editableTidyList = editableTidyList?.copy(
+              items = editableTidyList?.items.orEmpty() + TidyListItem(id = uuid4().toString(), text = it.text)
+            )
+            newItemText = ""
+          }
+          is EditListViewEvent.UpdateNewItemText -> newItemText = it.text
         }
       }
     }
 
     return editableTidyList?.let {
-      EditListViewModel.Edit(
+      EditListViewModel.Loaded.Edit(
+        title = "Edit List",
         name = it.name,
+        newItemText = newItemText,
         items = it.items,
       )
     } ?: EditListViewModel.Loading

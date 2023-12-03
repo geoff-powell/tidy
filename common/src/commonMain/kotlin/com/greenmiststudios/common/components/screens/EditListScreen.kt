@@ -11,9 +11,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -22,19 +23,20 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.greenmiststudios.common.components.ActionButton
 import com.greenmiststudios.common.components.TopAppBarWithContent
 import com.greenmiststudios.common.presenters.EditListPresenter
 import com.greenmiststudios.common.screens.Screen
 import com.greenmiststudios.common.screens.bindPresenter
 import com.greenmiststudios.common.viewmodels.EditListViewEvent
 import com.greenmiststudios.common.viewmodels.EditListViewEvent.AddNewItem
+import com.greenmiststudios.common.viewmodels.EditListViewEvent.DeleteList
 import com.greenmiststudios.common.viewmodels.EditListViewEvent.UpdateItemCompletion
 import com.greenmiststudios.common.viewmodels.EditListViewEvent.UpdateList
 import com.greenmiststudios.common.viewmodels.EditListViewModel
@@ -52,13 +54,33 @@ public data class EditListScreen(override val params: Config) : Screen<EditListS
   }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEvent) -> Unit) {
+  val navigator = LocalNavigator.current!!
   TopAppBarWithContent(
     modifier = Modifier.fillMaxSize(),
     title = viewModel.title,
     navigationIcon = rememberVectorPainter(Icons.Default.ArrowBack),
+    actionButtons = buildList {
+      if (viewModel is EditListViewModel.Loaded.Edit) {
+        add(
+          ActionButton(
+            action = "Delete",
+            icon = rememberVectorPainter(Icons.Default.Delete)
+          ) {
+            onEvent(DeleteList)
+            navigator.pop()
+          }
+        )
+      }
+
+      add(
+        ActionButton("Save") {
+          onEvent(UpdateList)
+          navigator.pop()
+        }
+      )
+    }
   ) {
     Column(Modifier.padding(16.dp).fillMaxSize()) {
       Column(Modifier.fillMaxWidth().weight(1f)) {
@@ -69,24 +91,13 @@ public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEv
             Box(modifier = Modifier.height(128.dp)) {
               CircularProgressIndicator()
             }
-            return@Column
+            return@TopAppBarWithContent
           }
         }
 
         require(viewModel is EditListViewModel.Loaded)
       }
 
-      val navigator = LocalNavigator.current!!
-      Button(
-        modifier = Modifier
-          .fillMaxWidth(),
-        onClick = {
-          onEvent(UpdateList)
-          navigator.pop()
-        }
-      ) {
-        Text("Save")
-      }
     }
   }
 }
@@ -106,7 +117,7 @@ private fun CreateListScreen(
     TextField(
       modifier = Modifier
         .fillMaxWidth(),
-      leadingIcon = { Icon(Icons.Rounded.Add, contentDescription = "Add Item") },
+      leadingIcon = { Icon(Icons.Default.Add, contentDescription = "Add Item") },
       placeholder = { Text("Add Item") },
       value = viewModel.newItemText,
       onValueChange = { text -> onEvent(EditListViewEvent.UpdateNewItemText(text)) },

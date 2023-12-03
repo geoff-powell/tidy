@@ -43,8 +43,14 @@ INSERT INTO TidyList (id, name, description, created_by) VALUES (?, ?, ?, ?);
 updateListName:
 UPDATE TidyList SET name = :name, updated_at = CURRENT_TIMESTAMP WHERE id = :id;
 
+deleteList:
+DELETE FROM TidyList WHERE id = :id;
+
 addOrUpdateListItem:
 INSERT OR REPLACE INTO TidyListItem (id, list_id, text, completed, created_by) VALUES (?, ?, ?, ?, ?);
 
 updateListItem:
 UPDATE TidyListItem SET text = :text, completed = :completed, updated_at = CURRENT_TIMESTAMP WHERE id = :id;
+
+deleteListItems:
+DELETE FROM TidyListItem WHERE list_id = :id;

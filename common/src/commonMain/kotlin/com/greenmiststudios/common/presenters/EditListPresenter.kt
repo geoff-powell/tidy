@@ -86,6 +86,7 @@ public class EditListPresenter(
             newItemText = ""
           }
           is EditListViewEvent.UpdateNewItemText -> newItemText = event.text
+          EditListViewEvent.DeleteList -> Unit
         }
 
       }
@@ -155,6 +156,14 @@ public class EditListPresenter(
             newItemText = ""
           }
           is EditListViewEvent.UpdateNewItemText -> newItemText = it.text
+          EditListViewEvent.DeleteList -> {
+            launch(ioContext) {
+              val list = requireNotNull(editableTidyList)
+              // TODO: Add confirmation dialog
+              tidyListQueries.deleteListItems(list.id)
+              tidyListQueries.deleteList(list.id)
+            }
+          }
         }
       }
     }

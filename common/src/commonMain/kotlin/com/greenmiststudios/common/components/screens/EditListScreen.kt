@@ -11,7 +11,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -59,13 +61,33 @@ public data class EditListScreen(override val params: Config) : Screen<EditListS
   }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEvent) -> Unit) {
+  val navigator = LocalNavigator.current!!
   TopAppBarWithContent(
     modifier = Modifier.fillMaxSize(),
     title = viewModel.title,
     navigationIcon = rememberVectorPainter(Icons.Default.ArrowBack),
+    actionButtons = buildList {
+      if (viewModel is EditListViewModel.Loaded.Edit) {
+        add(
+          ActionButton(
+            action = "Delete",
+            icon = rememberVectorPainter(Icons.Default.Delete)
+          ) {
+            onEvent(DeleteList)
+            navigator.pop()
+          }
+        )
+      }
+
+      add(
+        ActionButton("Save") {
+          onEvent(UpdateList)
+          navigator.pop()
+        }
+      )
+    }
   ) {
     Column(Modifier.padding(16.dp).fillMaxSize()) {
       Column(Modifier.fillMaxWidth().weight(1f)) {
@@ -76,24 +98,13 @@ public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEv
             Box(modifier = Modifier.height(128.dp)) {
               CircularProgressIndicator()
             }
-            return@Column
+            return@TopAppBarWithContent
           }
         }
 
         require(viewModel is EditListViewModel.Loaded)
       }
 
-      val navigator = LocalNavigator.current!!
-      Button(
-        modifier = Modifier
-          .fillMaxWidth(),
-        onClick = {
-          onEvent(UpdateList)
-          navigator.pop()
-        }
-      ) {
-        Text("Save")
-      }
     }
   }
 }
@@ -113,7 +124,7 @@ private fun CreateListScreen(
     TextField(
       modifier = Modifier
         .fillMaxWidth(),
-      leadingIcon = { Icon(Icons.Rounded.Add, contentDescription = "Add Item") },
+      leadingIcon = { Icon(Icons.Default.Add, contentDescription = "Add Item") },
       placeholder = { Text("Add Item") },
       value = viewModel.newItemText,
       onValueChange = { text -> onEvent(EditListViewEvent.UpdateNewItemText(text)) },

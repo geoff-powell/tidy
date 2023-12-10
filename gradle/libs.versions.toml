@@ -2,7 +2,7 @@
 kotlin = "2.0.0-Beta1"
 agp = "8.2.0"
 compose = "1.5.11"
-ktor = "2.3.6"
+ktor = "2.3.7"
 koin = "3.5.0"
 voyager = "1.0.0"
 sqldelight = "2.0.0"

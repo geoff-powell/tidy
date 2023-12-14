@@ -6,10 +6,10 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import com.greenmiststudios.common.UIShow
 import com.greenmiststudios.common.di.appModule
-import org.koin.core.context.startKoin
+import com.greenmiststudios.common.di.startTidyKoin
 
 fun main() = application {
-  startKoin {
+  startTidyKoin {
     modules(appModule())
   }
 

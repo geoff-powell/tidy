@@ -39,13 +39,13 @@ import org.koin.compose.KoinContext
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun App() {
-  Box(
-    modifier =
-    Modifier.fillMaxSize()
-      .statusBarsPadding()
-      .navigationBarsPadding()
-  ) {
-    KoinContext {
+  KoinContext {
+    Box(
+      modifier =
+      Modifier.fillMaxSize()
+        .statusBarsPadding()
+        .navigationBarsPadding()
+    ) {
       MaterialTheme(
         shapes = Shapes(
           small = RoundedCornerShape(4.dp),

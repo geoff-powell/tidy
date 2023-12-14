@@ -18,22 +18,6 @@ public actual fun getPlatformName(): String {
 }
 
 @Composable
-private fun UIShow() {
+public fun UIShow() {
   App()
-}
-
-public fun MainViewController(): UIViewController = ComposeUIViewController {
-  MaterialTheme(
-    colorScheme = if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
-  ) {
-    Surface(
-      modifier = Modifier.fillMaxSize(),
-    ) {
-      Column(
-        modifier = Modifier.fillMaxSize(),
-      ) {
-        UIShow()
-      }
-    }
-  }
 }

@@ -54,3 +54,6 @@ UPDATE TidyListItem SET text = :text, completed = :completed, updated_at = CURRE
 
 deleteListItems:
 DELETE FROM TidyListItem WHERE list_id = :id;
+
+deleteListItemById:
+DELETE FROM TidyListItem WHERE id = :id;

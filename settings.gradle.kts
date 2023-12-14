@@ -20,10 +20,5 @@ dependencyResolutionManagement {
   }
 }
 
-
-include(":android")
-include(":desktop")
-include(":jsApp")
-
 include(":common")
 include(":composeApp")

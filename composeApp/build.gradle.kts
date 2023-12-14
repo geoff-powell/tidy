@@ -2,8 +2,6 @@ import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 
-// import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.android.application)
@@ -11,16 +9,6 @@ plugins {
 }
 
 kotlin {
-  // @OptIn(ExperimentalWasmDsl::class)
-  // wasmJs {
-  //     moduleName = "composeApp"
-  //     browser {
-  //         commonWebpackConfig {
-  //             outputFileName = "composeApp.js"
-  //         }
-  //     }
-  //     binaries.executable()
-  // }
   js(IR) {
     browser {
       useCommonJs()

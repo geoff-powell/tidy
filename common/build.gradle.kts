@@ -1,17 +1,15 @@
-
 plugins {
   kotlin("multiplatform")
   alias(libs.plugins.compose)
   alias(libs.plugins.sqldelight)
   id("com.android.library")
-  kotlin("native.cocoapods")
 }
 
-group = "com.greenmiststudios"
-version = "1.0-SNAPSHOT"
+group = "com.greenmiststudios.tidy"
+version = "${libs.versions.version}-SNAPSHOT"
 
-@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-kotlin {
+@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class) kotlin {
+
   androidTarget {
     compilations.all {
       kotlinOptions.jvmTarget = "11"
@@ -25,21 +23,10 @@ kotlin {
   js(IR) {
     browser()
   }
+
   iosX64()
   iosArm64()
   iosSimulatorArm64()
-
-  cocoapods {
-    summary = "Common module for Tidy"
-    homepage = "https://github.com/geoff-powell/tidy"
-    version = "1.0"
-    ios.deploymentTarget = "17.0"
-    podfile = project.file("../iosApp/Podfile")
-    framework {
-      baseName = "common"
-      isStatic = true
-    }
-  }
 
   sourceSets {
     val commonMain by getting {
@@ -101,18 +88,14 @@ kotlin {
       }
     }
 
-    val iosX64Main by getting {
-      dependencies {
-      }
+    iosMain.dependencies {
     }
-    val iosArm64Main by getting {
-      dependencies {
-      }
-    }
-    val iosSimulatorArm64Main by getting {
-      dependencies {
-      }
-    }
+
+    // val wasmJsMain by getting {
+    //     dependencies {
+    //         implementation(libs.ktor.core.wasm)
+    //     }
+    // }
   }
 
   explicitApi()
@@ -120,11 +103,11 @@ kotlin {
 
 android {
   namespace = "com.greenmiststudios.tidy.common"
-  compileSdk = 34
+  compileSdk = libs.versions.android.compileSdk.get().toInt()
   sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
   defaultConfig {
-    minSdk = 24
-    targetSdk = 34
+    minSdk = libs.versions.android.minSdk.get().toInt()
+    targetSdk = libs.versions.android.targetSdk.get().toInt()
   }
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -137,5 +120,6 @@ sqldelight {
     create("Database") {
       packageName.set("com.greenmiststudios.tidy")
     }
+    linkSqlite = true
   }
 }

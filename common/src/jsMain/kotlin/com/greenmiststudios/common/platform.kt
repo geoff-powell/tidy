@@ -4,15 +4,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import com.greenmiststudios.common.UIShow
-import com.greenmiststudios.common.di.appModule
+import com.greenmiststudios.common.di.startTidyKoin
 import org.jetbrains.skiko.wasm.onWasmReady
-import org.koin.core.context.startKoin
 
 public fun main() {
   onWasmReady {
-    startKoin {
-      modules(appModule())
-    }
+    startTidyKoin()
 
     Window("tidy") {
       MaterialTheme(colorScheme = if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()) {

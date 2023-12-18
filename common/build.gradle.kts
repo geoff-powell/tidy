@@ -1,14 +1,16 @@
 plugins {
   kotlin("multiplatform")
+  id("com.android.library")
   alias(libs.plugins.compose)
   alias(libs.plugins.sqldelight)
-  id("com.android.library")
+  alias(libs.plugins.spotless)
 }
 
 group = "com.greenmiststudios.tidy"
 version = "${libs.versions.version}-SNAPSHOT"
 
-@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class) kotlin {
+@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+kotlin {
 
   androidTarget {
     compilations.all {

@@ -24,21 +24,15 @@ plugins {
 }
 
 allprojects {
-  afterEvaluate {
-    extensions.findByType<ComposeExtension>()?.apply {
-      kotlinCompilerPlugin.set(libs.versions.compose.kotlin.compiler.get())
+  extensions.findByType<com.diffplug.gradle.spotless.SpotlessExtension>()?.apply { // if you are using build.gradle.kts, instead of 'spotless {' use:
+    kotlin {
+      // by default the target is every '.kt' and '.kts` file in the java sourcesets
+      ktlint()   // has its own section below
+      // licenseHeader '/* (C)$YEAR */' // or licenseHeaderFile
     }
-
-    extensions.findByType<com.diffplug.gradle.spotless.SpotlessExtension>()?.apply { // if you are using build.gradle.kts, instead of 'spotless {' use:
-      kotlin {
-        // by default the target is every '.kt' and '.kts` file in the java sourcesets
-        ktlint()   // has its own section below
-        // licenseHeader '/* (C)$YEAR */' // or licenseHeaderFile
-      }
-      kotlinGradle {
-        // target '*.gradle.kts' // default target for kotlinGradle
-        ktlint() // or ktfmt() or prettier()
-      }
+    kotlinGradle {
+      // target '*.gradle.kts' // default target for kotlinGradle
+      ktlint() // or ktfmt() or prettier()
     }
   }
 }

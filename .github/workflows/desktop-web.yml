@@ -3,11 +3,13 @@ name: Desktop and Web CI
 on:
   push:
     branches:
-    - main
-  pull_request:
-    branches:
       - main
-      
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   Build-Desktop:
     runs-on: ubuntu-latest
@@ -20,14 +22,16 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'zulu'
           cache: gradle
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Setup gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-home-cache-cleanup: true
 
       - name: Build with Gradle
-        run: ./gradlew desktop:assemble
+        run: ./gradlew composeApp:desktopJar
 
   Build-Web:
     runs-on: ubuntu-latest
@@ -40,7 +44,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'zulu'
           cache: gradle
 
       - name: Grant execute permission for gradlew
@@ -52,4 +56,4 @@ jobs:
           node-version: '10.x'
 
       - name: Build with Gradle
-        run: ./gradlew jsApp:assemble
+        run: ./gradlew composeApp:jsJar

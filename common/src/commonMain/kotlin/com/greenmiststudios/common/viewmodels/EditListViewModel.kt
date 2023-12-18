@@ -33,6 +33,7 @@ public sealed interface EditListViewModel {
 
 public sealed interface EditListViewEvent {
   public data object UpdateList : EditListViewEvent
+  public data object DeleteList : EditListViewEvent
 
   public data object AddItem : EditListViewEvent
   public data class AddNewItem(val text: String) : EditListViewEvent

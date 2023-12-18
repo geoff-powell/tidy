@@ -14,6 +14,7 @@ import com.greenmiststudios.common.components.screens.EditListScreen
 import com.greenmiststudios.common.data.TidyList
 import com.greenmiststudios.common.data.TidyListItem
 import com.greenmiststudios.common.data.asTidyList
+import com.greenmiststudios.common.persistance.createList
 import com.greenmiststudios.common.persistance.updateList
 import com.greenmiststudios.common.viewmodels.EditListViewEvent
 import com.greenmiststudios.common.viewmodels.EditListViewModel
@@ -67,7 +68,11 @@ public class EditListPresenter(
 
           is EditListViewEvent.UpdateList -> {
             launch(ioContext) {
-              tidyListQueries.updateList(tidyList)
+              if (newItemText.isNotEmpty()) {
+                tidyList = tidyList.copy(items = tidyList.items + TidyListItem(id = uuid4().toString(), text = newItemText))
+                newItemText = ""
+              }
+              tidyListQueries.createList(tidyList)
             }
           }
 
@@ -86,6 +91,7 @@ public class EditListPresenter(
             newItemText = ""
           }
           is EditListViewEvent.UpdateNewItemText -> newItemText = event.text
+          EditListViewEvent.DeleteList -> Unit
         }
 
       }
@@ -94,6 +100,7 @@ public class EditListPresenter(
     return EditListViewModel.Loaded.Add(
       title = "Add List",
       name = tidyList.name,
+      newItemText = newItemText,
       items = tidyList.items,
     )
   }
@@ -155,6 +162,14 @@ public class EditListPresenter(
             newItemText = ""
           }
           is EditListViewEvent.UpdateNewItemText -> newItemText = it.text
+          EditListViewEvent.DeleteList -> {
+            launch(ioContext) {
+              val list = requireNotNull(editableTidyList)
+              // TODO: Add confirmation dialog
+              tidyListQueries.deleteListItems(list.id)
+              tidyListQueries.deleteList(list.id)
+            }
+          }
         }
       }
     }

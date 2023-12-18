@@ -6,17 +6,26 @@ ktor = "2.3.7"
 koin = "3.5.0"
 voyager = "1.0.0"
 sqldelight = "2.0.0"
+androidx-compose = "1.5.4"
+android-compileSdk = "34"
+android-targetSdk = "34"
+android-minSdk = "24"
+version = "1.0.0"
+versionCode = "1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version = "2.0.0-Beta1-1.0.15" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 
 [libraries]
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-core-wasm = { module = "io.ktor:ktor-client-core-wasm", version.ref = "ktor" }
 ktor-jvm = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
 ktor-jsonjs = { module = "io.ktor:ktor-client-json-js", version.ref = "ktor" }

@@ -89,6 +89,9 @@ version = "${libs.versions.version}-SNAPSHOT"
     }
 
     iosMain.dependencies {
+      // Fixes sqldelight 2.0.1 issue with ios compilation
+      // https://github.com/cashapp/sqldelight/issues/4888
+      implementation("co.touchlab:stately-common:2.0.6")
     }
 
     // val wasmJsMain by getting {

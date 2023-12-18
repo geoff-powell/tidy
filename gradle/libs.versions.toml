@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.0.0-Beta1"
+kotlin = "2.0.0-Beta2"
 agp = "8.2.0"
 compose = "1.5.11"
 androidx-compose = "1.5.4"

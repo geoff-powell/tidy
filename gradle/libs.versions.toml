@@ -1,12 +1,11 @@
 [versions]
-kotlin = "2.0.0-Beta2"
+kotlin = "2.0.0-Beta1"
 agp = "8.2.0"
-compose = "1.5.11"
+compose = "1.6.0-alpha01"
 ktor = "2.3.7"
 koin = "3.5.0"
 voyager = "1.0.0"
 sqldelight = "2.0.0"
-compose-kotlin-compiler = "1.5.4-dev1-kt2.0.0-Beta1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

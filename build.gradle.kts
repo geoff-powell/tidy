@@ -21,11 +21,3 @@ plugins {
   alias(libs.plugins.ksp) apply false
   alias(libs.plugins.sqldelight) apply false
 }
-
-allprojects {
-  afterEvaluate {
-    extensions.findByType<ComposeExtension>()?.apply {
-      kotlinCompilerPlugin.set(libs.versions.compose.kotlin.compiler.get())
-    }
-  }
-}

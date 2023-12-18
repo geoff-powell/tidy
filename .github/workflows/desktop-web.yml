@@ -1,4 +1,4 @@
-name: Desktop and Web CI
+name: Desktop and Web
 
 on:
   push:

@@ -64,8 +64,42 @@ jobs:
       - name: Build with Xcode
         run: xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination generic/platform=iOS -archivePath $RUNNER_TEMP/Tidy.xcarchive
 
-      - name: Upload Artifacts
+      - name: Upload Archive Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: iOS Archive
           path: $RUNNER_TEMP/Tidy/**/*.xcarchive
+
+      # Only run the following steps when a push event occurs on main branch
+      - name: Build App Artifact with Xcode
+        if: github.event_name == 'push'
+        env:
+          EXPORT_OPTIONS_PLIST: ${{ secrets.IOS_EXPORT_OPTIONS }}
+        run: |
+          EXPORT_OPTS_PATH=$RUNNER_TEMP/ExportOptions.plist
+          echo -n "IOS_EXPORT_OPTIONS" | base64 --decode -o $RUNNER_TEMP/exportOptions.plist
+          xcodebuild -archivePath $RUNNER_TEMP/iosApp.xcarchive
+              -exportArchive -exportPath '$RUNNER_TEMP/Tidy.app'
+              -exportOptionsPlist $RUNNER_TEMP/exportOptions.plist
+
+      - name: Upload to Github Artifacts
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: $RUNNER_TEMP/**/*.app
+
+      - name: Copy App Store Private Key
+        if: github.event_name == 'push'
+        env:
+          IOS_APPSTORE_PRIVATE_KEY: ${{ secrets.IOS_APPSTORE_PRIVATE_KEY }}
+        run: echo -n "$IOS_APPSTORE_PRIVATE_KEY" | base64 --decode -o $RUNNER_TEMP/appstore_private_key.p8
+
+      - name: Upload app to TestFlight
+        if: github.event_name == 'push'
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: $RUNNER_TEMP/Tidy.app
+          issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.IOS_APPSTORE_API_KEY_ID }}
+          api-private-key: $RUNNER_TEMP/appstore_private_key.p8

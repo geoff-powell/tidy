@@ -4,15 +4,18 @@ on:
   push: 
     branches: 
       - main
-      - ios-upload-testflight # TODO: this is a temporary branch for testing (REMOVE)
+      - ci-version-code # TODO: this is a temporary branch for testing (REMOVE)
   pull_request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-jobs: 
-  build: 
+jobs:
+  build-number:
+    uses: ./.github/workflows/build-number.yml
+
+  build:
     runs-on: macos-latest
     steps:
       - name: Check Xcode version
@@ -74,6 +77,12 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
 
+      # Update build number with the one generated from build-number.yml
+      - uses: yanamura/ios-bump-version@v1
+        with:
+          build-number: ${{jobs.build-number.outputs.build-number}}
+          project-path: iosApp
+
       - name: Build Artifact with Xcode
         run: xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination generic/platform=iOS -archivePath $RUNNER_TEMP/Tidy.xcarchive archive
 
@@ -110,12 +119,3 @@ jobs:
           echo "$IOS_APPSTORE_PRIVATE_KEY" | sed 's/[^A-Za-z0-9+/=]//g' | base64 --decode -o "./private_keys/AuthKey_$APPSTORE_API_KEY_ID.p8"
           xcrun altool --validate-app -f ${{ runner.temp }}/Tidy.ipa -t ios --apiKey "$APPSTORE_API_KEY_ID" --apiIssuer ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
           xcrun altool --upload-app -f ${{ runner.temp }}/Tidy.ipa -t ios --apiKey "$APPSTORE_API_KEY_ID" --apiIssuer ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
-
-#      - name: Upload app to TestFlight
-#        if: github.event_name == 'push'
-#        uses: apple-actions/upload-testflight-build@v1
-#        with:
-#          app-path: $RUNNER_TEMP/Tidy.ipa
-#          issuer-id: ${{ secrets.IOS_APPSTORE_ISSUER_ID }}
-#          api-key-id: ${{ secrets.IOS_APPSTORE_API_KEY_ID }}
-#          api-private-key: $RUNNER_TEMP/appstore_private_key.p8

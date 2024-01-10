@@ -1,6 +1,4 @@
 #!/bin/bash
-set -x
-
 TAGS=$(git show-ref --tags)
 
 function getBuildNumberTag {
@@ -43,3 +41,4 @@ else
 fi
 
 echo "BUILD_NUMBER=$CURRENT_BUILD_NUMBER" >> "$GITHUB_ENV"
+echo "BUILD_NUMBER=$CURRENT_BUILD_NUMBER" >> "$GITHUB_OUTPUT"

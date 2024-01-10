@@ -1,4 +1,9 @@
-import org.jetbrains.compose.ComposeExtension
+// Manifest version information!
+val versionMajor = 1
+val versionMinor = 0
+val versionPatch = 0
+val versionBuild = providers.gradleProperty("build-number").map { it.toInt() }.getOrElse(1)
+val versionName = "$versionMajor.$versionMinor.$versionPatch"
 
 group = "com.greenmiststudios"
 version = "1.0-SNAPSHOT"
@@ -24,6 +29,9 @@ plugins {
 }
 
 allprojects {
+  ext.set("version", versionName)
+  ext.set("versionBuild", versionBuild)
+
   extensions.findByType<com.diffplug.gradle.spotless.SpotlessExtension>()?.apply { // if you are using build.gradle.kts, instead of 'spotless {' use:
     kotlin {
       // by default the target is every '.kt' and '.kts` file in the java sourcesets

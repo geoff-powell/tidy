@@ -4,7 +4,6 @@ on:
   push: 
     branches: 
       - main
-      - ci-version-code # TODO: this is a temporary branch for testing (REMOVE)
   pull_request:
 
 concurrency:

@@ -35,6 +35,12 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew composeApp:assembleDebug -Pbuild-numeber=${{ needs.build-number.outputs.build-number }}
 
+    - name: Upload App
+      uses: actions/upload-artifact@v4
+      with:
+        name: Android Debug Archive
+        path: ${{ github.workspace }}/**/build/**/*.apk
+
   build-release:
     runs-on: ubuntu-latest
     steps:
@@ -52,6 +58,12 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew composeApp:assembleRelease -Pbuild-numeber=${{ needs.build-number.outputs.build-number }}
+
+      - name: Upload App
+        uses: actions/upload-artifact@v4
+        with:
+          name: Android Release Archive
+          path: ${{ github.workspace }}/**/build/**/*.apk
 
   test:
     runs-on: ubuntu-latest

@@ -15,6 +15,8 @@ public actual class DriverFactory {
           extendedConfig = DatabaseConfiguration.Extended(foreignKeyConstraints = true)
         )
       },
-      name = "tidy.db")
+      maxReaderConnections = 4,
+      name = "tidy.db"
+    )
   }
 }

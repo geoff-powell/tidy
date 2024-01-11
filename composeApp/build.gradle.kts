@@ -9,6 +9,8 @@ plugins {
   alias(libs.plugins.spotless)
 }
 
+val projectVersion = project.ext.get("version")?.toString()
+
 kotlin {
   js(IR) {
     browser {
@@ -82,8 +84,8 @@ android {
     applicationId = "com.greenmiststudios.tidy"
     minSdk = libs.versions.android.minSdk.get().toInt()
     targetSdk = libs.versions.android.targetSdk.get().toInt()
-    versionCode = project.properties["tidy.version_code"]?.toString()?.toInt() ?: 1
-    versionName = project.properties["tidy.version_name"]?.toString()
+    versionCode = project.ext.get("versionBuild")?.toString()?.toInt() ?: 0
+    versionName = projectVersion
   }
   packaging {
     resources {
@@ -114,7 +116,7 @@ compose.desktop {
     nativeDistributions {
       targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
       packageName = "com.greenmiststudios.tidy"
-      packageVersion = project.properties["tidy.version_name"]?.toString()
+      packageVersion = projectVersion
     }
   }
 }

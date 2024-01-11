@@ -33,7 +33,7 @@ jobs:
         gradle-home-cache-cleanup: true
 
     - name: Build with Gradle
-      run: ./gradlew composeApp:assembleDebug
+      run: ./gradlew composeApp:assembleDebug -Pbuild-numeber=${{ needs.build-number.outputs.build-number }}
 
   build-release:
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew composeApp:assembleRelease
+        run: ./gradlew composeApp:assembleRelease -Pbuild-numeber=${{ needs.build-number.outputs.build-number }}
 
   test:
     runs-on: ubuntu-latest

@@ -7,20 +7,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
-import com.benasher44.uuid.uuid4
+import com.greenmiststudios.common.components.screens.EditListScreen
 import com.greenmiststudios.common.data.TidyList
 import com.greenmiststudios.common.data.TidyListItem
-import com.greenmiststudios.common.data.asTidyList
+import com.greenmiststudios.common.navigation.Navigator
 import com.greenmiststudios.common.viewmodels.ListsViewEvent
 import com.greenmiststudios.common.viewmodels.ListsViewModel
 import com.greenmiststudios.tidy.Database
 import com.greenmiststudios.tidy.GetAllListsWithItems
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 public class ListsPresenter(
+  private val navigator: Navigator,
   private val database: Database,
   private val ioContext: CoroutineContext,
 ) : MoleculePresenter<ListsViewModel, ListsViewEvent> {
@@ -29,10 +29,8 @@ public class ListsPresenter(
     LaunchedEffect(Unit) {
       events.collect {
         when (it) {
-          ListsViewEvent.AddList -> {
-          }
-          is ListsViewEvent.OpenList -> {
-          }
+          ListsViewEvent.AddList -> navigator.goTo(EditListScreen(EditListScreen.Config.CreateList))
+          is ListsViewEvent.OpenList -> navigator.goTo(EditListScreen(EditListScreen.Config.EditList(it.id)))
         }
       }
     }

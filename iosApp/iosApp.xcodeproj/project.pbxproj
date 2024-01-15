@@ -10,6 +10,44 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		4044BDFD2B509BE40067310D /* nativeMain in Resources */ = {isa = PBXBuildFile; fileRef = 4044BDFC2B509BE40067310D /* nativeMain */; };
+		409C36D62B514FFC00C173CD /* iosMain in Resources */ = {isa = PBXBuildFile; fileRef = 409C36D42B514FFC00C173CD /* iosMain */; };
+		409C36D72B514FFC00C173CD /* commonMain in Resources */ = {isa = PBXBuildFile; fileRef = 409C36D52B514FFC00C173CD /* commonMain */; };
+		409C371A2B51513600C173CD /* HomeViewModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36E82B51513600C173CD /* HomeViewModel.kt */; };
+		409C371B2B51513600C173CD /* ListsViewModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36E92B51513600C173CD /* ListsViewModel.kt */; };
+		409C371C2B51513600C173CD /* EditListViewModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36EA2B51513600C173CD /* EditListViewModel.kt */; };
+		409C371D2B51513600C173CD /* Binding.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36EC2B51513600C173CD /* Binding.kt */; };
+		409C371E2B51513600C173CD /* Koins.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36EE2B51513600C173CD /* Koins.kt */; };
+		409C371F2B51513600C173CD /* Threading.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F02B51513600C173CD /* Threading.kt */; };
+		409C37202B51513600C173CD /* CommonModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F12B51513600C173CD /* CommonModule.kt */; };
+		409C37212B51513600C173CD /* AppModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F22B51513600C173CD /* AppModule.kt */; };
+		409C37222B51513600C173CD /* PlatformModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F32B51513600C173CD /* PlatformModule.kt */; };
+		409C37232B51513600C173CD /* PresenterModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F42B51513600C173CD /* PresenterModule.kt */; };
+		409C37242B51513600C173CD /* AsyncModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F52B51513600C173CD /* AsyncModule.kt */; };
+		409C37252B51513600C173CD /* platform.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F62B51513600C173CD /* platform.kt */; };
+		409C37262B51513600C173CD /* StringManagerProvider.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36F82B51513600C173CD /* StringManagerProvider.kt */; };
+		409C37272B51513600C173CD /* StringManager.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36FA2B51513600C173CD /* StringManager.kt */; };
+		409C37282B51513600C173CD /* RealStringManager.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36FB2B51513600C173CD /* RealStringManager.kt */; };
+		409C37292B51513600C173CD /* EditListPresenter.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36FD2B51513600C173CD /* EditListPresenter.kt */; };
+		409C372A2B51513600C173CD /* ListsPresenter.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36FE2B51513600C173CD /* ListsPresenter.kt */; };
+		409C372B2B51513600C173CD /* HomePresenter.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C36FF2B51513600C173CD /* HomePresenter.kt */; };
+		409C372C2B51513600C173CD /* MoleculePresenter.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37002B51513600C173CD /* MoleculePresenter.kt */; };
+		409C372D2B51513600C173CD /* Screen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37022B51513600C173CD /* Screen.kt */; };
+		409C372E2B51513600C173CD /* Tab.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37032B51513600C173CD /* Tab.kt */; };
+		409C372F2B51513600C173CD /* Bindings.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37042B51513600C173CD /* Bindings.kt */; };
+		409C37302B51513600C173CD /* BottomNavBar.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37062B51513600C173CD /* BottomNavBar.kt */; };
+		409C37312B51513600C173CD /* ListsScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37082B51513600C173CD /* ListsScreen.kt */; };
+		409C37322B51513600C173CD /* HomeScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37092B51513600C173CD /* HomeScreen.kt */; };
+		409C37332B51513600C173CD /* CalendarScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C370A2B51513600C173CD /* CalendarScreen.kt */; };
+		409C37342B51513600C173CD /* EditListScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C370B2B51513600C173CD /* EditListScreen.kt */; };
+		409C37352B51513600C173CD /* TopAppBarWithContent.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C370C2B51513600C173CD /* TopAppBarWithContent.kt */; };
+		409C37362B51513600C173CD /* App.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C370D2B51513600C173CD /* App.kt */; };
+		409C37372B51513600C173CD /* Driver.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C370F2B51513600C173CD /* Driver.kt */; };
+		409C37382B51513600C173CD /* Databases.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37102B51513600C173CD /* Databases.kt */; };
+		409C37392B51513600C173CD /* TidyList.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37122B51513600C173CD /* TidyList.kt */; };
+		409C373A2B51513600C173CD /* CustomerId.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37132B51513600C173CD /* CustomerId.kt */; };
+		409C373B2B51513600C173CD /* TidyList.sq in Resources */ = {isa = PBXBuildFile; fileRef = 409C37182B51513600C173CD /* TidyList.sq */; };
+		409C37422B51611D00C173CD /* platform.ios.kt in Resources */ = {isa = PBXBuildFile; fileRef = 409C37412B51611D00C173CD /* platform.ios.kt */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -17,6 +55,44 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		4044BDFC2B509BE40067310D /* nativeMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = nativeMain; path = ../../common/src/nativeMain; sourceTree = "<group>"; };
+		409C36D42B514FFC00C173CD /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../composeApp/src/iosMain; sourceTree = "<group>"; };
+		409C36D52B514FFC00C173CD /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../composeApp/src/commonMain; sourceTree = "<group>"; };
+		409C36E82B51513600C173CD /* HomeViewModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomeViewModel.kt; sourceTree = "<group>"; };
+		409C36E92B51513600C173CD /* ListsViewModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ListsViewModel.kt; sourceTree = "<group>"; };
+		409C36EA2B51513600C173CD /* EditListViewModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EditListViewModel.kt; sourceTree = "<group>"; };
+		409C36EC2B51513600C173CD /* Binding.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Binding.kt; sourceTree = "<group>"; };
+		409C36EE2B51513600C173CD /* Koins.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Koins.kt; sourceTree = "<group>"; };
+		409C36F02B51513600C173CD /* Threading.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Threading.kt; sourceTree = "<group>"; };
+		409C36F12B51513600C173CD /* CommonModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CommonModule.kt; sourceTree = "<group>"; };
+		409C36F22B51513600C173CD /* AppModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppModule.kt; sourceTree = "<group>"; };
+		409C36F32B51513600C173CD /* PlatformModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PlatformModule.kt; sourceTree = "<group>"; };
+		409C36F42B51513600C173CD /* PresenterModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PresenterModule.kt; sourceTree = "<group>"; };
+		409C36F52B51513600C173CD /* AsyncModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AsyncModule.kt; sourceTree = "<group>"; };
+		409C36F62B51513600C173CD /* platform.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = platform.kt; sourceTree = "<group>"; };
+		409C36F82B51513600C173CD /* StringManagerProvider.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringManagerProvider.kt; sourceTree = "<group>"; };
+		409C36FA2B51513600C173CD /* StringManager.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringManager.kt; sourceTree = "<group>"; };
+		409C36FB2B51513600C173CD /* RealStringManager.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RealStringManager.kt; sourceTree = "<group>"; };
+		409C36FD2B51513600C173CD /* EditListPresenter.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EditListPresenter.kt; sourceTree = "<group>"; };
+		409C36FE2B51513600C173CD /* ListsPresenter.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ListsPresenter.kt; sourceTree = "<group>"; };
+		409C36FF2B51513600C173CD /* HomePresenter.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomePresenter.kt; sourceTree = "<group>"; };
+		409C37002B51513600C173CD /* MoleculePresenter.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoleculePresenter.kt; sourceTree = "<group>"; };
+		409C37022B51513600C173CD /* Screen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Screen.kt; sourceTree = "<group>"; };
+		409C37032B51513600C173CD /* Tab.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tab.kt; sourceTree = "<group>"; };
+		409C37042B51513600C173CD /* Bindings.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bindings.kt; sourceTree = "<group>"; };
+		409C37062B51513600C173CD /* BottomNavBar.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BottomNavBar.kt; sourceTree = "<group>"; };
+		409C37082B51513600C173CD /* ListsScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ListsScreen.kt; sourceTree = "<group>"; };
+		409C37092B51513600C173CD /* HomeScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomeScreen.kt; sourceTree = "<group>"; };
+		409C370A2B51513600C173CD /* CalendarScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CalendarScreen.kt; sourceTree = "<group>"; };
+		409C370B2B51513600C173CD /* EditListScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EditListScreen.kt; sourceTree = "<group>"; };
+		409C370C2B51513600C173CD /* TopAppBarWithContent.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TopAppBarWithContent.kt; sourceTree = "<group>"; };
+		409C370D2B51513600C173CD /* App.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = App.kt; sourceTree = "<group>"; };
+		409C370F2B51513600C173CD /* Driver.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Driver.kt; sourceTree = "<group>"; };
+		409C37102B51513600C173CD /* Databases.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Databases.kt; sourceTree = "<group>"; };
+		409C37122B51513600C173CD /* TidyList.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TidyList.kt; sourceTree = "<group>"; };
+		409C37132B51513600C173CD /* CustomerId.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CustomerId.kt; sourceTree = "<group>"; };
+		409C37182B51513600C173CD /* TidyList.sq */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TidyList.sq; sourceTree = "<group>"; };
+		409C37412B51611D00C173CD /* platform.ios.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = platform.ios.kt; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* Tidy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tidy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,11 +109,275 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		406824592B3B644800E19DB0 /* New Group */ = {
+		4044BDF32B509B860067310D /* Kotlin */ = {
 			isa = PBXGroup;
 			children = (
+				409C36D32B514FA700C173CD /* App */,
+				409C36D22B514F9400C173CD /* New Group */,
+			);
+			name = Kotlin;
+			sourceTree = "<group>";
+		};
+		409C36D22B514F9400C173CD /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				409C373C2B51611D00C173CD /* iosMain */,
+				409C36E22B51513600C173CD /* commonMain */,
+				4044BDFC2B509BE40067310D /* nativeMain */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		409C36D32B514FA700C173CD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				409C36D52B514FFC00C173CD /* commonMain */,
+				409C36D42B514FFC00C173CD /* iosMain */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		409C36E22B51513600C173CD /* commonMain */ = {
+			isa = PBXGroup;
+			children = (
+				409C36E32B51513600C173CD /* kotlin */,
+				409C37142B51513600C173CD /* sqldelight */,
+			);
+			name = commonMain;
+			path = ../../common/src/commonMain;
+			sourceTree = "<group>";
+		};
+		409C36E32B51513600C173CD /* kotlin */ = {
+			isa = PBXGroup;
+			children = (
+				409C36E42B51513600C173CD /* com */,
+			);
+			path = kotlin;
+			sourceTree = "<group>";
+		};
+		409C36E42B51513600C173CD /* com */ = {
+			isa = PBXGroup;
+			children = (
+				409C36E52B51513600C173CD /* greenmiststudios */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		409C36E52B51513600C173CD /* greenmiststudios */ = {
+			isa = PBXGroup;
+			children = (
+				409C36E62B51513600C173CD /* common */,
+			);
+			path = greenmiststudios;
+			sourceTree = "<group>";
+		};
+		409C36E62B51513600C173CD /* common */ = {
+			isa = PBXGroup;
+			children = (
+				409C36E72B51513600C173CD /* viewmodels */,
+				409C36EB2B51513600C173CD /* uiutils */,
+				409C36ED2B51513600C173CD /* di */,
+				409C36F62B51513600C173CD /* platform.kt */,
+				409C36F72B51513600C173CD /* providers */,
+				409C36F92B51513600C173CD /* resources */,
+				409C36FC2B51513600C173CD /* presenters */,
+				409C37012B51513600C173CD /* screens */,
+				409C37052B51513600C173CD /* components */,
+				409C370E2B51513600C173CD /* persistance */,
+				409C37112B51513600C173CD /* data */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		409C36E72B51513600C173CD /* viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				409C36E82B51513600C173CD /* HomeViewModel.kt */,
+				409C36E92B51513600C173CD /* ListsViewModel.kt */,
+				409C36EA2B51513600C173CD /* EditListViewModel.kt */,
+			);
+			path = viewmodels;
+			sourceTree = "<group>";
+		};
+		409C36EB2B51513600C173CD /* uiutils */ = {
+			isa = PBXGroup;
+			children = (
+				409C36EC2B51513600C173CD /* Binding.kt */,
+			);
+			path = uiutils;
+			sourceTree = "<group>";
+		};
+		409C36ED2B51513600C173CD /* di */ = {
+			isa = PBXGroup;
+			children = (
+				409C36EE2B51513600C173CD /* Koins.kt */,
+				409C36EF2B51513600C173CD /* qualifiers */,
+				409C36F12B51513600C173CD /* CommonModule.kt */,
+				409C36F22B51513600C173CD /* AppModule.kt */,
+				409C36F32B51513600C173CD /* PlatformModule.kt */,
+				409C36F42B51513600C173CD /* PresenterModule.kt */,
+				409C36F52B51513600C173CD /* AsyncModule.kt */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		409C36EF2B51513600C173CD /* qualifiers */ = {
+			isa = PBXGroup;
+			children = (
+				409C36F02B51513600C173CD /* Threading.kt */,
+			);
+			path = qualifiers;
+			sourceTree = "<group>";
+		};
+		409C36F72B51513600C173CD /* providers */ = {
+			isa = PBXGroup;
+			children = (
+				409C36F82B51513600C173CD /* StringManagerProvider.kt */,
+			);
+			path = providers;
+			sourceTree = "<group>";
+		};
+		409C36F92B51513600C173CD /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				409C36FA2B51513600C173CD /* StringManager.kt */,
+				409C36FB2B51513600C173CD /* RealStringManager.kt */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		409C36FC2B51513600C173CD /* presenters */ = {
+			isa = PBXGroup;
+			children = (
+				409C36FD2B51513600C173CD /* EditListPresenter.kt */,
+				409C36FE2B51513600C173CD /* ListsPresenter.kt */,
+				409C36FF2B51513600C173CD /* HomePresenter.kt */,
+				409C37002B51513600C173CD /* MoleculePresenter.kt */,
+			);
+			path = presenters;
+			sourceTree = "<group>";
+		};
+		409C37012B51513600C173CD /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				409C37022B51513600C173CD /* Screen.kt */,
+				409C37032B51513600C173CD /* Tab.kt */,
+				409C37042B51513600C173CD /* Bindings.kt */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		409C37052B51513600C173CD /* components */ = {
+			isa = PBXGroup;
+			children = (
+				409C37062B51513600C173CD /* BottomNavBar.kt */,
+				409C37072B51513600C173CD /* screens */,
+				409C370C2B51513600C173CD /* TopAppBarWithContent.kt */,
+				409C370D2B51513600C173CD /* App.kt */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		409C37072B51513600C173CD /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				409C37082B51513600C173CD /* ListsScreen.kt */,
+				409C37092B51513600C173CD /* HomeScreen.kt */,
+				409C370A2B51513600C173CD /* CalendarScreen.kt */,
+				409C370B2B51513600C173CD /* EditListScreen.kt */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		409C370E2B51513600C173CD /* persistance */ = {
+			isa = PBXGroup;
+			children = (
+				409C370F2B51513600C173CD /* Driver.kt */,
+				409C37102B51513600C173CD /* Databases.kt */,
+			);
+			path = persistance;
+			sourceTree = "<group>";
+		};
+		409C37112B51513600C173CD /* data */ = {
+			isa = PBXGroup;
+			children = (
+				409C37122B51513600C173CD /* TidyList.kt */,
+				409C37132B51513600C173CD /* CustomerId.kt */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		409C37142B51513600C173CD /* sqldelight */ = {
+			isa = PBXGroup;
+			children = (
+				409C37152B51513600C173CD /* com */,
+			);
+			path = sqldelight;
+			sourceTree = "<group>";
+		};
+		409C37152B51513600C173CD /* com */ = {
+			isa = PBXGroup;
+			children = (
+				409C37162B51513600C173CD /* greenmiststudios */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		409C37162B51513600C173CD /* greenmiststudios */ = {
+			isa = PBXGroup;
+			children = (
+				409C37172B51513600C173CD /* tidy */,
+			);
+			path = greenmiststudios;
+			sourceTree = "<group>";
+		};
+		409C37172B51513600C173CD /* tidy */ = {
+			isa = PBXGroup;
+			children = (
+				409C37182B51513600C173CD /* TidyList.sq */,
+			);
+			path = tidy;
+			sourceTree = "<group>";
+		};
+		409C373C2B51611D00C173CD /* iosMain */ = {
+			isa = PBXGroup;
+			children = (
+				409C373D2B51611D00C173CD /* kotlin */,
+			);
+			name = iosMain;
+			path = ../../common/src/iosMain;
+			sourceTree = "<group>";
+		};
+		409C373D2B51611D00C173CD /* kotlin */ = {
+			isa = PBXGroup;
+			children = (
+				409C373E2B51611D00C173CD /* com */,
+			);
+			path = kotlin;
+			sourceTree = "<group>";
+		};
+		409C373E2B51611D00C173CD /* com */ = {
+			isa = PBXGroup;
+			children = (
+				409C373F2B51611D00C173CD /* greenmiststudios */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		409C373F2B51611D00C173CD /* greenmiststudios */ = {
+			isa = PBXGroup;
+			children = (
+				409C37402B51611D00C173CD /* common */,
+			);
+			path = greenmiststudios;
+			sourceTree = "<group>";
+		};
+		409C37402B51611D00C173CD /* common */ = {
+			isa = PBXGroup;
+			children = (
+				409C37412B51611D00C173CD /* platform.ios.kt */,
+			);
+			path = common;
 			sourceTree = "<group>";
 		};
 		42799AB246E5F90AF97AA0EF /* Frameworks */ = {
@@ -50,7 +390,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
-				406824592B3B644800E19DB0 /* New Group */,
+				4044BDF32B509B860067310D /* Kotlin */,
 				AB1DB47929225F7C00F7AF9C /* Configuration */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
@@ -145,8 +485,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				409C37392B51513600C173CD /* TidyList.kt in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				409C37302B51513600C173CD /* BottomNavBar.kt in Resources */,
+				409C37222B51513600C173CD /* PlatformModule.kt in Resources */,
+				409C371B2B51513600C173CD /* ListsViewModel.kt in Resources */,
+				409C37262B51513600C173CD /* StringManagerProvider.kt in Resources */,
+				409C371E2B51513600C173CD /* Koins.kt in Resources */,
+				409C372F2B51513600C173CD /* Bindings.kt in Resources */,
+				4044BDFD2B509BE40067310D /* nativeMain in Resources */,
+				409C37322B51513600C173CD /* HomeScreen.kt in Resources */,
+				409C37272B51513600C173CD /* StringManager.kt in Resources */,
+				409C37312B51513600C173CD /* ListsScreen.kt in Resources */,
+				409C37242B51513600C173CD /* AsyncModule.kt in Resources */,
+				409C372E2B51513600C173CD /* Tab.kt in Resources */,
+				409C37372B51513600C173CD /* Driver.kt in Resources */,
+				409C37292B51513600C173CD /* EditListPresenter.kt in Resources */,
+				409C37252B51513600C173CD /* platform.kt in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				409C37422B51611D00C173CD /* platform.ios.kt in Resources */,
+				409C373A2B51513600C173CD /* CustomerId.kt in Resources */,
+				409C371C2B51513600C173CD /* EditListViewModel.kt in Resources */,
+				409C37382B51513600C173CD /* Databases.kt in Resources */,
+				409C37202B51513600C173CD /* CommonModule.kt in Resources */,
+				409C372A2B51513600C173CD /* ListsPresenter.kt in Resources */,
+				409C37212B51513600C173CD /* AppModule.kt in Resources */,
+				409C37282B51513600C173CD /* RealStringManager.kt in Resources */,
+				409C37352B51513600C173CD /* TopAppBarWithContent.kt in Resources */,
+				409C373B2B51513600C173CD /* TidyList.sq in Resources */,
+				409C372C2B51513600C173CD /* MoleculePresenter.kt in Resources */,
+				409C372D2B51513600C173CD /* Screen.kt in Resources */,
+				409C37362B51513600C173CD /* App.kt in Resources */,
+				409C37332B51513600C173CD /* CalendarScreen.kt in Resources */,
+				409C371F2B51513600C173CD /* Threading.kt in Resources */,
+				409C371D2B51513600C173CD /* Binding.kt in Resources */,
+				409C36D62B514FFC00C173CD /* iosMain in Resources */,
+				409C37232B51513600C173CD /* PresenterModule.kt in Resources */,
+				409C371A2B51513600C173CD /* HomeViewModel.kt in Resources */,
+				409C372B2B51513600C173CD /* HomePresenter.kt in Resources */,
+				409C37342B51513600C173CD /* EditListScreen.kt in Resources */,
+				409C36D72B514FFC00C173CD /* commonMain in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

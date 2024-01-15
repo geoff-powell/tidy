@@ -10,11 +10,6 @@ public actual class DriverFactory {
   public actual fun createDriver(): SqlDriver {
     return NativeSqliteDriver(
       schema = Database.Schema,
-      onConfiguration = { config: DatabaseConfiguration ->
-        config.copy(
-          extendedConfig = DatabaseConfiguration.Extended(foreignKeyConstraints = true)
-        )
-      },
       maxReaderConnections = 4,
       name = "tidy.db"
     )

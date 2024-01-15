@@ -14,6 +14,8 @@ import com.greenmiststudios.common.components.screens.EditListScreen
 import com.greenmiststudios.common.data.TidyList
 import com.greenmiststudios.common.data.TidyListItem
 import com.greenmiststudios.common.data.asTidyList
+import com.greenmiststudios.common.navigation.Back
+import com.greenmiststudios.common.navigation.Navigator
 import com.greenmiststudios.common.persistance.createList
 import com.greenmiststudios.common.persistance.updateList
 import com.greenmiststudios.common.viewmodels.EditListViewEvent
@@ -27,11 +29,12 @@ import kotlin.coroutines.CoroutineContext
 
 public class EditListPresenter(
   private val screen: EditListScreen,
+  private val navigator: Navigator,
   database: Database,
   private val ioContext: CoroutineContext,
 ) : MoleculePresenter<EditListViewModel, EditListViewEvent> {
-  private val tidyListQueries: TidyListQueries =database.tidyListQueries
-  
+  private val tidyListQueries: TidyListQueries = database.tidyListQueries
+
   @Composable
   override fun models(events: Flow<EditListViewEvent>): EditListViewModel {
     return when (val config = screen.params) {
@@ -69,10 +72,16 @@ public class EditListPresenter(
           is EditListViewEvent.UpdateList -> {
             launch(ioContext) {
               if (newItemText.isNotEmpty()) {
-                tidyList = tidyList.copy(items = tidyList.items + TidyListItem(id = uuid4().toString(), text = newItemText))
+                tidyList = tidyList.copy(
+                  items = tidyList.items + TidyListItem(
+                    id = uuid4().toString(),
+                    text = newItemText
+                  )
+                )
                 newItemText = ""
               }
               tidyListQueries.createList(tidyList)
+              navigator.goTo(Back)
             }
           }
 
@@ -83,15 +92,26 @@ public class EditListPresenter(
           }
 
           EditListViewEvent.AddItem -> {
-            tidyList = tidyList.copy(items = tidyList.items + TidyListItem(id = uuid4().toString(), text = ""))
+            tidyList = tidyList.copy(
+              items = tidyList.items + TidyListItem(
+                id = uuid4().toString(),
+                text = ""
+              )
+            )
           }
 
           is EditListViewEvent.AddNewItem -> {
-            tidyList = tidyList.copy(items = tidyList.items + TidyListItem(id = uuid4().toString(), text = event.text))
+            tidyList = tidyList.copy(
+              items = tidyList.items + TidyListItem(
+                id = uuid4().toString(),
+                text = event.text
+              )
+            )
             newItemText = ""
           }
+
           is EditListViewEvent.UpdateNewItemText -> newItemText = event.text
-          EditListViewEvent.DeleteList -> Unit
+          EditListViewEvent.DeleteList -> navigator.goTo(Back)
         }
 
       }
@@ -143,6 +163,7 @@ public class EditListPresenter(
             launch(ioContext) {
               val list = requireNotNull(editableTidyList)
               tidyListQueries.updateList(list)
+              navigator.goTo(Back)
             }
           }
 
@@ -151,16 +172,26 @@ public class EditListPresenter(
               copy(text = it.text)
             }
           }
+
           EditListViewEvent.AddItem -> {
-            editableTidyList = editableTidyList?.copy(items = editableTidyList?.items.orEmpty() + TidyListItem(id = uuid4().toString(), text = ""))
+            editableTidyList = editableTidyList?.copy(
+              items = editableTidyList?.items.orEmpty() + TidyListItem(
+                id = uuid4().toString(),
+                text = ""
+              )
+            )
           }
 
           is EditListViewEvent.AddNewItem -> {
             editableTidyList = editableTidyList?.copy(
-              items = editableTidyList?.items.orEmpty() + TidyListItem(id = uuid4().toString(), text = it.text)
+              items = editableTidyList?.items.orEmpty() + TidyListItem(
+                id = uuid4().toString(),
+                text = it.text
+              )
             )
             newItemText = ""
           }
+
           is EditListViewEvent.UpdateNewItemText -> newItemText = it.text
           EditListViewEvent.DeleteList -> {
             launch(ioContext) {
@@ -169,6 +200,7 @@ public class EditListPresenter(
               tidyListQueries.deleteListItems(list.id)
               tidyListQueries.deleteList(list.id)
             }
+            navigator.goTo(Back)
           }
         }
       }

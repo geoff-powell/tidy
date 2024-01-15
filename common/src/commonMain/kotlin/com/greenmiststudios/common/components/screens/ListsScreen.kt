@@ -45,7 +45,6 @@ public fun ListsScreen(listsViewModel: ListsViewModel, onEvent: (ListsViewEvent)
     modifier = Modifier.fillMaxSize(),
     actionButtons = listOf(
       ActionButton(action = "Add", icon = rememberVectorPainter(Icons.Filled.Add)) {
-        navigator.push(EditListScreen(EditListScreen.Config.CreateList))
         onEvent(AddList)
       }
     )
@@ -64,7 +63,6 @@ public fun ListsScreen(listsViewModel: ListsViewModel, onEvent: (ListsViewEvent)
             .wrapContentHeight()
             .clickable(onClickLabel = list.name) {
               onEvent(ListsViewEvent.OpenList(list.id))
-              navigator.push(EditListScreen(EditListScreen.Config.EditList(list.id)))
             },
         ) {
           Column(
@@ -72,7 +70,11 @@ public fun ListsScreen(listsViewModel: ListsViewModel, onEvent: (ListsViewEvent)
           ) {
             Text(list.name)
             list.items.forEach { item ->
-              Text(modifier = Modifier.padding(start = 8.dp), text = item.text, style = MaterialTheme.typography.labelSmall)
+              Text(
+                modifier = Modifier.padding(start = 8.dp),
+                text = item.text,
+                style = MaterialTheme.typography.labelSmall
+              )
             }
           }
         }

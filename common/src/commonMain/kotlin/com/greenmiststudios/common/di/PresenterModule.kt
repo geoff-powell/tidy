@@ -8,7 +8,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 public val presenterModule: Module = module {
-  factory { EditListPresenter(screen = get(), database = get(), ioContext = get(IO)) }
-  factory { ListsPresenter(database = get(), ioContext = get(IO)) }
+  factory { EditListPresenter(screen = get(), navigator = get(), database = get(), ioContext = get(IO)) }
+  factory { ListsPresenter(database = get(), navigator = get(), ioContext = get(IO)) }
   factory { HomePresenter() }
 }

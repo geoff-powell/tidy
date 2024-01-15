@@ -38,6 +38,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.greenmiststudios.common.components.ActionButton
 import com.greenmiststudios.common.components.TopAppBarWithContent
 import com.greenmiststudios.common.data.TidyListItem
+import com.greenmiststudios.common.navigation.VoyagerScreen
 import com.greenmiststudios.common.presenters.EditListPresenter
 import com.greenmiststudios.common.screens.Screen
 import com.greenmiststudios.common.screens.bindPresenter
@@ -49,7 +50,7 @@ import com.greenmiststudios.common.viewmodels.EditListViewEvent.UpdateList
 import com.greenmiststudios.common.viewmodels.EditListViewModel
 import kotlin.reflect.KProperty
 
-public data class EditListScreen(override val params: Config) : Screen<EditListScreen.Config> {
+public data class EditListScreen(override val params: Config) : Screen<EditListScreen.Config>, VoyagerScreen {
   public sealed interface Config {
     public data object CreateList : Config
     public data class EditList(val id: String) : Config
@@ -77,7 +78,6 @@ public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEv
             icon = rememberVectorPainter(Icons.Default.Delete)
           ) {
             onEvent(DeleteList)
-            navigator.pop()
           }
         )
       }
@@ -85,7 +85,6 @@ public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEv
       add(
         ActionButton("Save") {
           onEvent(UpdateList)
-          navigator.pop()
         }
       )
     }

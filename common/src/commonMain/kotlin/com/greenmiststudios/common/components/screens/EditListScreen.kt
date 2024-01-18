@@ -65,7 +65,6 @@ public data class EditListScreen(override val params: Config) : Screen<EditListS
 
 @Composable
 public fun EditListScreen(viewModel: EditListViewModel, onEvent: (EditListViewEvent) -> Unit) {
-  val navigator = LocalNavigator.current!!
   TopAppBarWithContent(
     modifier = Modifier.fillMaxSize(),
     title = viewModel.title,

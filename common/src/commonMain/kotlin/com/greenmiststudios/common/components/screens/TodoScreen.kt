@@ -17,30 +17,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.navigator.LocalNavigator
 import com.greenmiststudios.common.components.ActionButton
 import com.greenmiststudios.common.components.TopAppBarWithContent
-import com.greenmiststudios.common.presenters.ListsPresenter
+import com.greenmiststudios.common.presenters.TodoPresenter
 import com.greenmiststudios.common.screens.Screen
 import com.greenmiststudios.common.screens.bindPresenter
-import com.greenmiststudios.common.viewmodels.ListsViewEvent
-import com.greenmiststudios.common.viewmodels.ListsViewEvent.AddList
-import com.greenmiststudios.common.viewmodels.ListsViewModel
+import com.greenmiststudios.common.uiutils.LoggingEventReceiver
+import com.greenmiststudios.common.viewmodels.TodoViewEvent
+import com.greenmiststudios.common.viewmodels.TodoViewEvent.AddList
+import com.greenmiststudios.common.viewmodels.TodoViewModel
 
-public object ListsScreen : Screen<Unit> {
+public object TodoScreen : Screen<Unit> {
   override val params: Unit = Unit
 
   @Composable
   override fun Content() {
-    val binding = bindPresenter<ListsPresenter, ListsViewModel, ListsViewEvent>()
-    ListsScreen(listsViewModel = binding.viewModel, onEvent = binding.onEvent)
+    val binding = bindPresenter<TodoPresenter, TodoViewModel, TodoViewEvent>()
+    TodoScreen(todoViewModel = binding.viewModel, onEvent = binding.onEvent)
   }
 }
 
 @Composable
-public fun ListsScreen(listsViewModel: ListsViewModel, onEvent: (ListsViewEvent) -> Unit) {
-  val navigator = LocalNavigator.current!!
-
+public fun TodoScreen(todoViewModel: TodoViewModel, onEvent: (TodoViewEvent) -> Unit) {
   TopAppBarWithContent(
     modifier = Modifier.fillMaxSize(),
     actionButtons = listOf(
@@ -53,8 +51,16 @@ public fun ListsScreen(listsViewModel: ListsViewModel, onEvent: (ListsViewEvent)
       modifier = Modifier,
       verticalArrangement = spacedBy(16.dp),
     ) {
-      items(listsViewModel.lists.size, key = { listsViewModel.lists[it].id }) {
-        val list = listsViewModel.lists[it]
+      item(key = TodoListKeys.ListHeader.key) {
+        Text(
+          modifier = Modifier.padding(horizontal = 16.dp),
+          text = "Lists",
+          style = MaterialTheme.typography.titleMedium
+        )
+      }
+
+      items(todoViewModel.lists.size, key = { todoViewModel.lists[it].id }) {
+        val list = todoViewModel.lists[it]
 
         Card(
           modifier = Modifier
@@ -62,7 +68,7 @@ public fun ListsScreen(listsViewModel: ListsViewModel, onEvent: (ListsViewEvent)
             .fillMaxWidth()
             .wrapContentHeight()
             .clickable(onClickLabel = list.name) {
-              onEvent(ListsViewEvent.OpenList(list.id))
+              onEvent(TodoViewEvent.OpenList(list.id))
             },
         ) {
           Column(
@@ -81,4 +87,11 @@ public fun ListsScreen(listsViewModel: ListsViewModel, onEvent: (ListsViewEvent)
       }
     }
   }
+}
+
+public enum class TodoListKeys {
+  ListHeader,
+  ;
+
+  public val key: String = this.name
 }

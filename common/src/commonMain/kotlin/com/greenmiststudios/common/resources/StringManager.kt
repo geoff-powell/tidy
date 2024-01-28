@@ -7,6 +7,6 @@ public interface StringManager {
 public enum class StringKey(public val value: String) {
   APP_NAME("Tidy"),
   TAB_HOME("Home"),
-  TAB_CALENDAR("Calendar"),
-  TAB_LISTS("Lists"),
+  TAB_AGENDA("Agenda"),
+  TAB_TODO("Todo"),
 }

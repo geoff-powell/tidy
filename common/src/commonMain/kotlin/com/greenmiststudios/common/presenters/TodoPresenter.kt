@@ -11,26 +11,26 @@ import com.greenmiststudios.common.components.screens.EditListScreen
 import com.greenmiststudios.common.data.TidyList
 import com.greenmiststudios.common.data.TidyListItem
 import com.greenmiststudios.common.navigation.Navigator
-import com.greenmiststudios.common.viewmodels.ListsViewEvent
-import com.greenmiststudios.common.viewmodels.ListsViewModel
+import com.greenmiststudios.common.viewmodels.TodoViewEvent
+import com.greenmiststudios.common.viewmodels.TodoViewModel
 import com.greenmiststudios.tidy.Database
 import com.greenmiststudios.tidy.GetAllListsWithItems
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlin.coroutines.CoroutineContext
 
-public class ListsPresenter(
+public class TodoPresenter(
   private val navigator: Navigator,
   private val database: Database,
   private val ioContext: CoroutineContext,
-) : MoleculePresenter<ListsViewModel, ListsViewEvent> {
+) : MoleculePresenter<TodoViewModel, TodoViewEvent> {
   @Composable
-  override fun models(events: Flow<ListsViewEvent>): ListsViewModel {
+  override fun models(events: Flow<TodoViewEvent>): TodoViewModel {
     LaunchedEffect(Unit) {
       events.collect {
         when (it) {
-          ListsViewEvent.AddList -> navigator.goTo(EditListScreen(EditListScreen.Config.CreateList))
-          is ListsViewEvent.OpenList -> navigator.goTo(EditListScreen(EditListScreen.Config.EditList(it.id)))
+          TodoViewEvent.AddList -> navigator.goTo(EditListScreen(EditListScreen.Config.CreateList))
+          is TodoViewEvent.OpenList -> navigator.goTo(EditListScreen(EditListScreen.Config.EditList(it.id)))
         }
       }
     }
@@ -42,7 +42,7 @@ public class ListsPresenter(
         .map { it.asTidyList() }
     }.collectAsState(emptyList())
 
-    return ListsViewModel(lists)
+    return TodoViewModel(lists)
   }
 }
 

@@ -22,11 +22,13 @@ public object HomeScreen : Screen<Unit> {
   }
 }
 
+@Suppress("UNUSED_PARAMETER")
 @Composable
 private fun HomeScreen(viewModel: HomeViewModel, onEvent: (HomeViewEvent) -> Unit) {
   TopAppBarWithContent {
     Box(modifier = Modifier.fillMaxWidth()) {
       Text("Home")
     }
+
   }
 }

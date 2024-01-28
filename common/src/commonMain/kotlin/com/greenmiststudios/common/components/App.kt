@@ -54,6 +54,7 @@ internal fun App() {
         )
       ) {
         CompositionLocalProvider(
+          // TODO: Move to dependency injection
           LocalStringManager provides RealStringManager(),
         ) {
           BottomSheetNavigator(
@@ -67,8 +68,8 @@ internal fun App() {
                     modifier = Modifier.fillMaxWidth(),
                   ) {
                     TabItem(Tab.Home)
-                    TabItem(Tab.Lists)
-                    TabItem(Tab.Calendar)
+                    TabItem(Tab.Todo)
+                    TabItem(Tab.Agenda)
                   }
                 },
               ) {

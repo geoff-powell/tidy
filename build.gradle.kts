@@ -1,3 +1,6 @@
+import com.android.build.api.dsl.ComposeOptions
+import org.jetbrains.compose.ComposeExtension
+
 // Manifest version information!
 val versionMajor = 1
 val versionMinor = 0
@@ -32,6 +35,11 @@ plugins {
 allprojects {
   ext.set("version", versionName)
   ext.set("versionBuild", versionBuild)
+
+  extensions.findByType(ComposeExtension::class.java)?.apply {
+    kotlinCompilerPlugin = libs.versions.composeCompiler.get()
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=2.0.0-Beta3")
+  }
 
   extensions.findByType<com.diffplug.gradle.spotless.SpotlessExtension>()?.apply { // if you are using build.gradle.kts, instead of 'spotless {' use:
     kotlin {

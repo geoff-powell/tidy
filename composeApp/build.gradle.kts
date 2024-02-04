@@ -110,20 +110,24 @@ dependencies {
   implementation(project(mapOf("path" to ":common")))
 }
 
-compose.desktop {
-  application {
-    mainClass = "MainKt"
+compose {
+  kotlinCompilerPlugin.set("1.5.2.1-rc01")
 
-    nativeDistributions {
-      targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-      packageName = "com.greenmiststudios.tidy"
-      packageVersion = projectVersion
+  desktop {
+    application {
+      mainClass = "MainKt"
+
+      nativeDistributions {
+        targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+        packageName = "com.greenmiststudios.tidy"
+        packageVersion = projectVersion
+      }
     }
   }
-}
 
-compose.experimental {
-  web.application {}
+  experimental {
+    web.application {}
+  }
 }
 
 afterEvaluate {

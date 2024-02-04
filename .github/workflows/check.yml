@@ -24,12 +24,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-          cache: gradle
 
       - name: Setup gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-home-cache-cleanup: true
+          cache-write-only: ${{ github.event_name == 'push' }}
+          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
       - name: Build with Gradle
         run: ./gradlew spotlessCheck

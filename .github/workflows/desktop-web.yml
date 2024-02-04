@@ -26,12 +26,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-          cache: gradle
 
       - name: Setup gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/setup-gradle-action@v3
         with:
           gradle-home-cache-cleanup: true
+          cache-write-only: ${{ github.event_name == 'push' }}
+          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
       - name: Build with Gradle
         run: ./gradlew composeApp:desktopJar
@@ -48,10 +49,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-          cache: gradle
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Setup gradle
+        uses: gradle/setup-gradle-action@v3
+        with:
+          gradle-home-cache-cleanup: true
+          cache-write-only: ${{ github.event_name == 'push' }}
+          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
